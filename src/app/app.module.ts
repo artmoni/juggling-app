@@ -12,6 +12,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {PollPage} from "../pages/poll/poll";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP} from "@ionic-native/http";
 
 @NgModule({
     declarations: [

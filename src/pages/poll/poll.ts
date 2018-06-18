@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HTTP} from "@ionic-native/http";
+import {Http} from "@angular/http";
 
 /**
  * Generated class for the PollPage page.
@@ -16,15 +17,15 @@ import {Observable} from "rxjs/Observable";
     templateUrl: 'poll.html',
 })
 export class PollPage {
-    property: Observable<any>;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
     }
 
+    data: any = {};
+
     ionViewDidLoad() {
         console.log('ionViewDidLoad PollPage');
-        this.property = this.http.get('http://127.0.0.1:8000/scene/last');
-        this.property.subscribe(data =>{console.log('background: ',data)});
+
         // this.http.get('http://127.0.0.1:8000/scene/last', {}, {})
         //     .then(data => {
         //
@@ -41,6 +42,29 @@ export class PollPage {
         //
         //     });
 
+    }
+
+    create(){
+        let question = 'Ceci est une question';
+        let url = 'http://127.0.0.1:8000/polls?test=toto';
+
+        let headers = new HttpHeaders({"Content-Type": "application/json"});
+        // headers.set("Accept", "application/json");
+        // headers.set("Content-Type", "application/json");
+        //
+        //
+        // headers.append('Access-Control-Allow-Origin' , '*');
+        // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+
+        let body = {
+            question: "Question numero 1"
+        };
+        this.http.post(url,body, {headers: headers})
+            .subscribe(data => {
+                this.data.response = data["_body"]; //https://stackoverflow.com/questions/39574305/property-body-does-not-exist-on-type-response
+            }, error => {
+                console.log("Oups!");
+            });
     }
 
 }
