@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {pollAnswer} from "../../models/poll_answer";
 import {Survey} from "../../models/survey";
+import {AbstractProvider} from "../AbstractProvider";
 
 /*
   Generated class for the SurveysProvider provider.
@@ -10,14 +11,11 @@ import {Survey} from "../../models/survey";
   and Angular DI.
 */
 @Injectable()
-export class SurveysProvider {
-    url: string = 'http://127.0.0.1:8000';
+export class SurveysProvider extends AbstractProvider {
 
     constructor(public http: HttpClient) {
-        console.log('Hello SurveysProvider Provider');
     }
-
-    createSurveyAnswer(survey:Survey, answer: pollAnswer) {
+    createSurveyAnswer(survey: Survey, answer: pollAnswer) {
         let body = {
             survey: survey,
             answer: answer,
@@ -25,12 +23,12 @@ export class SurveysProvider {
         };
         let headers = new HttpHeaders({"Content-Type": "application/json"});
 
-        return this.http.post(this.url+"/surveys/answers", body, {headers: headers});
+        return this.http.post(this.url + "/surveys/answers", body, {headers: headers});
 
     }
-    getSurveys(){
-        let url = 'http://127.0.0.1:8000/surveys/polls';
-        return this.http.get<Survey[]>(url, {})
+
+    getSurveys() {
+        return this.http.get<Survey[]>(this.url + "/surveys/polls", {})
 
     }
 }

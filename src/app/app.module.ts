@@ -15,6 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {SurveysProvider} from '../providers/surveys/surveys';
 import {SurveysPage} from "../pages/surveys/surveys";
 import {SurveyPage} from "../pages/survey/survey";
+import {PollsProvider} from '../providers/polls/polls';
+import {PollEditorPage} from "../pages/poll-editor/poll-editor";
 
 @NgModule({
     declarations: [
@@ -23,7 +25,10 @@ import {SurveyPage} from "../pages/survey/survey";
         ContactPage,
         HomePage,
         TabsPage,
-        PollPage, SurveysPage,SurveyPage
+        PollPage,
+        SurveysPage,
+        SurveyPage,
+        PollEditorPage
     ],
     imports: [
         BrowserModule,
@@ -36,13 +41,18 @@ import {SurveyPage} from "../pages/survey/survey";
         AboutPage,
         ContactPage,
         HomePage,
-        TabsPage, PollPage, SurveysPage,SurveyPage
+        TabsPage,
+        PollPage,
+        SurveysPage,
+        SurveyPage,
+        PollEditorPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        SurveysProvider
+        SurveysProvider,
+        PollsProvider
     ]
 })
 export class AppModule {
