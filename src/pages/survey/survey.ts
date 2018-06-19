@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Survey} from "../../models/survey";
-import {pollAnswer} from "../../models/poll_answer";
+import {PollAnswer} from "../../models/poll_answer";
 import {SurveysProvider} from "../../providers/surveys/surveys";
 
 /**
@@ -28,7 +28,7 @@ export class SurveyPage {
 
         this.survey = this.navParams.get('survey');
     }
-    selectAnswer(answer: pollAnswer) {
+    selectAnswer(answer: PollAnswer) {
         this.surveyProvider.createSurveyAnswer(this.survey, answer).subscribe();
     }
 }

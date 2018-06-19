@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Poll} from "../../models/poll";
 import {PollsProvider} from "../../providers/polls/polls";
-import {pollAnswer} from "../../models/poll_answer";
+import {PollAnswer} from "../../models/poll_answer";
 
 /**
  * Generated class for the PollEditorPage page.
@@ -19,7 +19,7 @@ import {pollAnswer} from "../../models/poll_answer";
 export class PollEditorPage {
 
     poll: Poll;
-    answers: pollAnswer[];
+    answers: PollAnswer[];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private pollProvider: PollsProvider) {
         this.poll = new Poll();

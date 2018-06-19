@@ -1,7 +1,7 @@
-import {pollAnswer} from "./poll_answer";
+import {PollAnswer} from "./poll_answer";
 
 export class Poll {
     question : string;
     id : number;
-    answers : pollAnswer [];
+    answers : PollAnswer [];
 }

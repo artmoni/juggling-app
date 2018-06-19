@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {pollAnswer} from "../../models/poll_answer";
+import {PollAnswer} from "../../models/poll_answer";
 import {Survey} from "../../models/survey";
 import {AbstractProvider} from "../AbstractProvider";
 
@@ -16,7 +16,7 @@ export class SurveysProvider extends AbstractProvider {
 
     constructor(public http: HttpClient) {
     }
-    createSurveyAnswer(survey: Survey, answer: pollAnswer) {
+    createSurveyAnswer(survey: Survey, answer: PollAnswer) {
         let body = {
             survey: survey,
             answer: answer,

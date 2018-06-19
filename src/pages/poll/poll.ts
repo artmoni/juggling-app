@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Poll} from "../../models/poll";
-import {pollAnswer} from "../../models/poll_answer";
+import {PollAnswer} from "../../models/poll_answer";
 import {Survey} from "../../models/survey";
 import {SurveysProvider} from "../../providers/surveys/surveys";
 import {SurveysPage} from "../surveys/surveys";
@@ -75,7 +75,7 @@ export class PollPage {
 
     }
 
-    selectAnswer(answer: pollAnswer) {
+    selectAnswer(answer: PollAnswer) {
         this.surveyProvider.createSurveyAnswer(this.survey, answer);
     }
 
