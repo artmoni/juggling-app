@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {HTTP} from "@ionic-native/http";
-import {Http} from "@angular/http";
+import {Poll} from "../../models/poll";
+import {pollAnswer} from "../../models/poll_answer";
 
 /**
  * Generated class for the PollPage page.
@@ -21,7 +21,7 @@ export class PollPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
     }
 
-    data: any = {};
+    poll: Poll;
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad PollPage');
@@ -44,9 +44,9 @@ export class PollPage {
 
     }
 
-    create(){
+    create() {
         let question = 'Ceci est une question';
-        let url = 'http://127.0.0.1:8000/polls?test=toto';
+        let url = 'http://127.0.0.1:8000/polls';
 
         let headers = new HttpHeaders({"Content-Type": "application/json"});
         // headers.set("Accept", "application/json");
@@ -59,12 +59,41 @@ export class PollPage {
         let body = {
             question: "Question numero 1"
         };
-        this.http.post(url,body, {headers: headers})
+        // this.http.post(url, body, {headers: headers})
+        //     .subscribe(data => {
+        //         this.poll.response = data["_body"]; //https://stackoverflow.com/questions/39574305/property-body-does-not-exist-on-type-response
+        //     }, error => {
+        //         console.log("Oups!");
+        //     });
+    }
+
+    showPoll() {
+        let id = 1;
+        let url = 'http://127.0.0.1:8000/polls/' + id;
+        this.http.get<Poll>(url, {})
+            .subscribe(poll => {
+                    this.poll = poll;
+                },
+                error1 => {
+                    console.log("No question");
+                })
+
+    }
+
+    selectAnswer(answer : pollAnswer){
+        let url = 'http://127.0.0.1:8000/surveys/answers';
+        let body = {
+            answer: answer,
+
+        };
+        let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+        this.http.post(url, body, {headers: headers})
             .subscribe(data => {
-                this.data.response = data["_body"]; //https://stackoverflow.com/questions/39574305/property-body-does-not-exist-on-type-response
+                console.log('ok'); //https://stackoverflow.com/questions/39574305/property-body-does-not-exist-on-type-response
             }, error => {
                 console.log("Oups!");
-            });
+            })
     }
 
 }

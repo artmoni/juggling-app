@@ -6,14 +6,28 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>poll</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>poll</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+    <!--<form>-->
+    <!--<label for="question">Question</label>-->
+    <!--<input type="text" name="question" id="question">-->
+    <!--<label for="answer">answer</label>-->
+    <!--<input type="text" name="answer" id="answer">-->
+
+    <!--</form>-->
     <button (click)="create()">Create poll</button>
+    <button (click)="showPoll()">Show Poll</button>
+    <div *ngIf="poll">
+        <p>{{poll.question}}</p>
+        <div *ngFor="let answer of poll.answers">
+            <button (click)="selectAnswer(answer)">{{answer.answer}}</button>
+        </div>
+    </div>
 
 </ion-content>
