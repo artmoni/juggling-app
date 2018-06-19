@@ -1,13 +1,19 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Contact
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-fab bottom right>
-    <button ion-fab (click)="goToPollEditor()">+</button>
-  </ion-fab>
+    <ion-list *ngIf="polls">
+        <ion-item *ngFor="let poll of polls">
+            {{poll.question}}
+            <ion-badge>{{poll.answers}}</ion-badge>
+        </ion-item>
+    </ion-list>
+    <ion-fab bottom right>
+        <button ion-fab (click)="goToPollEditor()">+</button>
+    </ion-fab>
 </ion-content>

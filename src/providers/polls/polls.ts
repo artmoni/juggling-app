@@ -22,4 +22,8 @@ export class PollsProvider extends AbstractProvider {
         return this.http.post(this.url + "/polls", poll, {headers: headers});
     }
 
+    getAll() {
+        return this.http.get<Poll[]>(this.url + "/polls");
+    }
+
 }
