@@ -1,5 +1,8 @@
+import {Injectable} from "@angular/core";
+
+@Injectable()
 export abstract class AbstractProvider {
-    url: string = 'http://127.0.0.1:8000';
+    protected url: string = 'http://127.0.0.1:8000';
 
 
 }

@@ -6,13 +6,24 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>pollEditor</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>pollEditor</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
 
+    <h1>Créer un questionnaire</h1>
+    <ion-list>
+        <ion-item>
+            <ion-label color="primary">Nouveau sondage</ion-label>
+            <ion-input placeholder="Question" [(ngModel)]="poll.question"></ion-input>
+        </ion-item>
+
+        <ion-footer>
+            <button (click)="createPoll()">Valider</button>
+        </ion-footer>
+    </ion-list>
 </ion-content>

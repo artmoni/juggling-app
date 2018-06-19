@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AbstractProvider} from "../AbstractProvider";
 import {Poll} from "../../models/poll";
@@ -11,12 +11,15 @@ import {Poll} from "../../models/poll";
 */
 @Injectable()
 export class PollsProvider extends AbstractProvider {
+    protected url: string = 'http://127.0.0.1:8000';
 
     constructor(public http: HttpClient) {
     }
 
     createPoll(poll: Poll) {
-        return this.http.post(this.url + "/polls", poll);
+        let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+        return this.http.post(this.url + "/polls", poll, {headers: headers});
     }
 
 }

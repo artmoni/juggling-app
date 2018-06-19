@@ -12,6 +12,7 @@ import {AbstractProvider} from "../AbstractProvider";
 */
 @Injectable()
 export class SurveysProvider extends AbstractProvider {
+    protected url: string = 'http://127.0.0.1:8000';
 
     constructor(public http: HttpClient) {
     }
