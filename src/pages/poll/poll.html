@@ -23,10 +23,17 @@
     <!--</form>-->
     <button (click)="create()">Create poll</button>
     <button (click)="showPoll()">Show Poll</button>
-    <div *ngIf="poll">
-        <p>{{poll.question}}</p>
-        <div *ngFor="let answer of poll.answers">
-            <button (click)="selectAnswer(answer)">{{answer.answer}}</button>
+    <div *ngIf="surveylist">
+        <div *ngFor="let survey of surveylist">
+            <h1>{{survey.poll.question}}</h1>
+            <ion-card *ngFor="let answer of survey.poll.answers" (click)="selectAnswer(answer)">
+                <ion-card-header>
+                    {{answer.answer}}
+                </ion-card-header>
+                <ion-card-content>
+
+                </ion-card-content>
+            </ion-card>
         </div>
     </div>
 

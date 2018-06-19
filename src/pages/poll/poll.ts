@@ -3,6 +3,9 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Poll} from "../../models/poll";
 import {pollAnswer} from "../../models/poll_answer";
+import {Survey} from "../../models/survey";
+import {SurveysProvider} from "../../providers/surveys/surveys";
+import {SurveysPage} from "../surveys/surveys";
 
 /**
  * Generated class for the PollPage page.
@@ -18,29 +21,19 @@ import {pollAnswer} from "../../models/poll_answer";
 })
 export class PollPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,  private surveyProvider: SurveysProvider) {
     }
 
-    poll: Poll;
+    // poll: Poll;
+
+    survey: Survey;
+    surveylist: Survey[];
+    // surveyPage: SurveysPage = new SurveysPage(this.navCtrl, this.navParams, this.http);
+    // surveyProvider: SurveysProvider = new SurveysProvider(this.http);
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad PollPage');
 
-        // this.http.get('http://127.0.0.1:8000/scene/last', {}, {})
-        //     .then(data => {
-        //
-        //         console.log(data.status);
-        //         console.log(data.data); // data received by server
-        //         console.log(data.headers);
-        //
-        //     })
-        //     .catch(error => {
-        //
-        //         console.log(error.status);
-        //         console.log(error.error); // error message as string
-        //         console.log(error.headers);
-        //
-        //     });
 
     }
 
@@ -68,32 +61,22 @@ export class PollPage {
     }
 
     showPoll() {
-        let id = 1;
-        let url = 'http://127.0.0.1:8000/polls/' + id;
-        this.http.get<Poll>(url, {})
-            .subscribe(poll => {
-                    this.poll = poll;
-                },
-                error1 => {
-                    console.log("No question");
-                })
+
+        // let $id = 1;
+        // let url = 'http://127.0.0.1:8000/surveys/polls/'+$id;
+        // this.http.get<Survey>(url, {})
+        //     .subscribe(survey => {
+        //             this.survey = survey;
+        //             console.log(this.survey.poll);
+        //         },
+        //         error1 => {
+        //             console.log("No question");
+        //         })
 
     }
 
-    selectAnswer(answer : pollAnswer){
-        let url = 'http://127.0.0.1:8000/surveys/answers';
-        let body = {
-            answer: answer,
-
-        };
-        let headers = new HttpHeaders({"Content-Type": "application/json"});
-
-        this.http.post(url, body, {headers: headers})
-            .subscribe(data => {
-                console.log('ok'); //https://stackoverflow.com/questions/39574305/property-body-does-not-exist-on-type-response
-            }, error => {
-                console.log("Oups!");
-            })
+    selectAnswer(answer: pollAnswer) {
+        this.surveyProvider.createSurveyAnswer(this.survey, answer);
     }
 
 }

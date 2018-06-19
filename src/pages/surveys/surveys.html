@@ -1,0 +1,23 @@
+<!--
+  Generated template for the SurveysPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>surveys</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="surveys">
+    <div *ngFor="let survey of surveys">
+      <h1 (click)="goToSurvey(survey)">{{survey.poll.question}}</h1>
+
+    </div>
+  </div>
+</ion-content>

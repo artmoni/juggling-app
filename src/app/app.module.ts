@@ -1,6 +1,6 @@
-import {NgModule, ErrorHandler} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 
 import {AboutPage} from '../pages/about/about';
@@ -11,8 +11,10 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {PollPage} from "../pages/poll/poll";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {HTTP} from "@ionic-native/http";
+import {HttpClientModule} from "@angular/common/http";
+import {SurveysProvider} from '../providers/surveys/surveys';
+import {SurveysPage} from "../pages/surveys/surveys";
+import {SurveyPage} from "../pages/survey/survey";
 
 @NgModule({
     declarations: [
@@ -21,7 +23,7 @@ import {HTTP} from "@ionic-native/http";
         ContactPage,
         HomePage,
         TabsPage,
-        PollPage
+        PollPage, SurveysPage,SurveyPage
     ],
     imports: [
         BrowserModule,
@@ -34,12 +36,13 @@ import {HTTP} from "@ionic-native/http";
         AboutPage,
         ContactPage,
         HomePage,
-        TabsPage, PollPage
+        TabsPage, PollPage, SurveysPage,SurveyPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: ErrorHandler, useClass: IonicErrorHandler}
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        SurveysProvider
     ]
 })
 export class AppModule {
