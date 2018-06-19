@@ -28,7 +28,7 @@ export class PollEditorPage {
     }
 
     createPoll() {
-        this.pollProvider.createPoll(this.poll).subscribe();
+        this.pollProvider.createPoll(this.poll).subscribe(data=>this.navCtrl.pop());
     }
 
 }
