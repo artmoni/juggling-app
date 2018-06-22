@@ -14,6 +14,7 @@ export class PollsProvider extends AbstractProvider {
     protected url: string = 'http://127.0.0.1:8000';
 
     constructor(public http: HttpClient) {
+        super();
     }
 
     createPoll(poll: Poll) {

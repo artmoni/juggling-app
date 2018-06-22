@@ -17,6 +17,10 @@ import {SurveysPage} from "../pages/surveys/surveys";
 import {SurveyPage} from "../pages/survey/survey";
 import {PollsProvider} from '../providers/polls/polls';
 import {PollEditorPage} from "../pages/poll-editor/poll-editor";
+import {AuthentificationProvider} from '../providers/authentification/authentification';
+import {SubscribePage} from "../pages/subscribe/subscribe";
+import {IonicStorageModule} from "@ionic/storage";
+import { TabsProvider } from '../providers/tabs/tabs';
 
 @NgModule({
     declarations: [
@@ -28,12 +32,16 @@ import {PollEditorPage} from "../pages/poll-editor/poll-editor";
         PollPage,
         SurveysPage,
         SurveyPage,
-        PollEditorPage
+        PollEditorPage,
+        SubscribePage
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
-        IonicModule.forRoot(MyApp)],
+        IonicModule.forRoot(MyApp),
+        IonicStorageModule.forRoot(),
+
+    ],
 
     bootstrap: [IonicApp],
     entryComponents: [
@@ -45,14 +53,17 @@ import {PollEditorPage} from "../pages/poll-editor/poll-editor";
         PollPage,
         SurveysPage,
         SurveyPage,
-        PollEditorPage
+        PollEditorPage,
+        SubscribePage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         SurveysProvider,
-        PollsProvider
+        PollsProvider,
+        AuthentificationProvider,
+    TabsProvider
     ]
 })
 export class AppModule {
