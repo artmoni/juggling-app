@@ -16,7 +16,7 @@
 <ion-content padding>
   <div *ngIf="surveys">
     <div *ngFor="let survey of surveys">
-      <h1 (click)="goToSurvey(survey)">{{survey.poll.question}}</h1>
+      <h1 (click)="goToSurvey()">{{survey.poll.question}}</h1>
 
     </div>
   </div>

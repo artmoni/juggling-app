@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Survey} from "../../models/survey";
-import {HttpClient} from "@angular/common/http";
 import {SurveysProvider} from "../../providers/surveys/surveys";
-import {PollPage} from "../poll/poll";
 import {SurveyPage} from "../survey/survey";
+import {Storage} from "@ionic/storage";
+
 
 /**
  * Generated class for the SurveysPage page.
@@ -17,13 +17,13 @@ import {SurveyPage} from "../survey/survey";
 @Component({
     selector: 'page-surveys',
     templateUrl: 'surveys.html',
-    providers:[SurveysProvider],
+    providers: [SurveysProvider],
 })
 export class SurveysPage {
 
     surveys: Survey[];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,  private surveyProvider: SurveysProvider) {
+    constructor(private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private surveyProvider: SurveysProvider) {
     }
 
     ionViewDidLoad() {
@@ -39,7 +39,9 @@ export class SurveysPage {
         })
     }
 
-    goToSurvey(survey: Survey) {
-        this.navCtrl.push(SurveyPage, {"survey": survey})
+    goToSurvey() {
+
+        this.navCtrl.push(SurveyPage, {})
+
     }
 }
