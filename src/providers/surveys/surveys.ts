@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {PollAnswer} from "../../models/poll_answer";
 import {Survey} from "../../models/survey";
 import {AbstractProvider} from "../AbstractProvider";
+import {User} from "../../models/user";
 
 /*
   Generated class for the SurveysProvider provider.
@@ -17,10 +18,11 @@ export class SurveysProvider extends AbstractProvider {
     constructor(public http: HttpClient) {
         super();
     }
-    createSurveyAnswer(survey: Survey, answer: PollAnswer) {
+    createSurveyAnswer(survey: Survey, answer: PollAnswer, user : User) {
         let body = {
             survey: survey,
             answer: answer,
+            user : user
 
         };
         let headers = new HttpHeaders({"Content-Type": "application/json"});

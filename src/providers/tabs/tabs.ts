@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {AbstractProvider} from "../AbstractProvider";
 import {User} from "../../models/user";
-import {Storage} from "@ionic/storage";
 
 /*
   Generated class for the TabsProvider provider.

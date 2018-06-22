@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Poll} from "../../models/poll";
+import { HttpHeaders} from "@angular/common/http";
 import {PollAnswer} from "../../models/poll_answer";
 import {Survey} from "../../models/survey";
 import {SurveysProvider} from "../../providers/surveys/surveys";
-import {SurveysPage} from "../surveys/surveys";
+import {serialize} from "serializer.ts/Serializer";
+import {Storage} from "@ionic/storage";
+
+
 
 /**
  * Generated class for the PollPage page.
@@ -21,7 +23,7 @@ import {SurveysPage} from "../surveys/surveys";
 })
 export class PollPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,  private surveyProvider: SurveysProvider) {
+    constructor(private storage : Storage ,public navCtrl: NavController, public navParams: NavParams,  private surveyProvider: SurveysProvider) {
     }
 
     // poll: Poll;
@@ -76,7 +78,11 @@ export class PollPage {
     }
 
     selectAnswer(answer: PollAnswer) {
-        this.surveyProvider.createSurveyAnswer(this.survey, answer);
+        this.storage.get("user").then( user => {
+            this.surveyProvider.createSurveyAnswer(this.survey, answer,serialize(user));
+        },error =>{
+            console.log("error")
+        });
     }
 
 }

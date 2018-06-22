@@ -3,6 +3,8 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Survey} from "../../models/survey";
 import {PollAnswer} from "../../models/poll_answer";
 import {SurveysProvider} from "../../providers/surveys/surveys";
+import {Storage} from "@ionic/storage";
+import {serialize} from "serializer.ts/Serializer";
 
 /**
  * Generated class for the SurveyPage page.
@@ -20,7 +22,7 @@ export class SurveyPage {
 
     survey: Survey;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,private surveyProvider: SurveysProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,private surveyProvider: SurveysProvider,private storage: Storage) {
     }
 
     ionViewDidLoad() {
@@ -29,6 +31,10 @@ export class SurveyPage {
         this.survey = this.navParams.get('survey');
     }
     selectAnswer(answer: PollAnswer) {
-        this.surveyProvider.createSurveyAnswer(this.survey, answer).subscribe();
+        this.storage.get("user").then((user)=>{
+        this.surveyProvider.createSurveyAnswer(this.survey, answer,serialize(user)).subscribe();
+        },error => {
+            console.log(error)
+        });
     }
 }
