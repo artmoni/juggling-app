@@ -5,7 +5,6 @@ import {PollAnswer} from "../../models/poll_answer";
 import {SurveysProvider} from "../../providers/surveys/surveys";
 import {Storage} from "@ionic/storage";
 import {serialize} from "serializer.ts/Serializer";
-import {User} from "../../models/user";
 
 
 /**
@@ -29,8 +28,7 @@ export class SurveyPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad SurveyPage');
-
-        this.survey = this.dispayPoll();
+        this.dispayPoll();
         // console.log(this.survey)
     }
 
@@ -42,24 +40,19 @@ export class SurveyPage {
         });
     }
 
-    dispayPoll(){
-        let surveytmp = null;
-        this.storage.get("user").then( users => {
+    dispayPoll() {
+        this.storage.get("user").then(users => {
             console.log(users);
             this.surveyProvider.getSurvey(serialize(users[0])).subscribe(survey => {
                 // console.log(survey);
-                console.log(survey);
-                if (survey[0] instanceof Survey) {
-                    surveytmp = survey;
-                    return survey;
-                }
+                this.survey = <Survey>survey;
+                console.log(this.survey);
             }, error1 => {
                 console.log("Not survey found");
             });
-        },error =>{
+        }, error => {
             console.log(error);
         });
-        // console.log(surveytmp)
-        return null;
+
     }
 }

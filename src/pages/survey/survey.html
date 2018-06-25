@@ -6,21 +6,24 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>survey</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>survey</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding *ngIf="survey">
-  <h1>{{survey.poll.question}}</h1>
-  <ion-card *ngFor="let answer of survey.poll.answers" (click)="selectAnswer(answer)">
-    <ion-card-header>
-      {{answer.answer}}
-    </ion-card-header>
-    <ion-card-content>
+<ion-content padding *ngIf="survey" style="margin-top: 50px">
 
-    </ion-card-content>
-  </ion-card>
+
+    <h1>{{survey.poll.question}}</h1>
+
+    <ion-card *ngFor="let answer of survey.poll.answers" (click)="selectAnswer(answer)">
+        <ion-card-header style="color: white">
+            {{answer.answer}}
+        </ion-card-header>
+        <ion-card-content>
+
+        </ion-card-content>
+    </ion-card>
 </ion-content>
