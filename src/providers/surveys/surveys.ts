@@ -37,6 +37,6 @@ export class SurveysProvider extends AbstractProvider {
     }
 
     getSurvey(user : User){
-        return this.http.get(this.url+"/surveys/polls/"+user.id);
+        return this.http.get(this.url+"/surveys/polls/users/"+user.id);
     }
 }
