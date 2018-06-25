@@ -32,11 +32,15 @@ export class SurveysPage {
     }
 
     show() {
-        this.surveyProvider.getSurveys().subscribe(surveys => {
-            this.surveys = surveys;
-        }, error1 => {
-            console.log(error1);
-        })
+        this.storage.get('user').then(user => {
+            this.surveyProvider.getSurveys(user).subscribe(surveys => {
+                this.surveys = surveys;
+            }, error1 => {
+                console.log(error1);
+            })
+        },error =>{
+            console.log(error);
+        });
     }
 
     goToSurvey() {

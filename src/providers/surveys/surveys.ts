@@ -13,16 +13,16 @@ import {User} from "../../models/user";
 */
 @Injectable()
 export class SurveysProvider extends AbstractProvider {
-    protected url: string = 'http://127.0.0.1:8000';
 
     constructor(public http: HttpClient) {
         super();
     }
-    createSurveyAnswer(survey: Survey, answer: PollAnswer, user : User) {
+
+    createSurveyAnswer(survey: Survey, answer: PollAnswer, user: User) {
         let body = {
             survey: survey,
             answer: answer,
-            user : user
+            user: user
 
         };
         let headers = new HttpHeaders({"Content-Type": "application/json"});
@@ -31,12 +31,12 @@ export class SurveysProvider extends AbstractProvider {
 
     }
 
-    getSurveys() {
-        return this.http.get<Survey[]>(this.url + "/surveys/polls", {})
+    getSurveys(user: User) {
+        return this.http.get<Survey[]>(this.url + "/users/" + user.id + "/surveys", {})
 
     }
 
-    getSurvey(user : User){
-        return this.http.get(this.url+"/surveys/polls/users/"+user.id);
+    getSurvey(user: User) {
+        return this.http.get(this.url + "/surveys/polls/users/" + user.id);
     }
 }
