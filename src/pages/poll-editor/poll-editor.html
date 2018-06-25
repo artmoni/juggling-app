@@ -21,9 +21,12 @@
             <ion-label color="primary">Nouveau sondage</ion-label>
             <ion-input placeholder="Question" [(ngModel)]="poll.question"></ion-input>
         </ion-item>
-
+        <ion-item>
+            <ion-label color="primary">Réponse 1</ion-label>
+            <ion-input placeholder="Question" [(ngModel)]="answers[0].answer"></ion-input>
+        </ion-item>
         <ion-footer>
-            <button (click)="createPoll()">Valider</button>
+            <button ion-button large center (click)="createPoll()">Valider</button>
         </ion-footer>
     </ion-list>
 </ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            Contact
+            List of Polls
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -10,7 +10,12 @@
     <ion-list *ngIf="polls">
         <ion-item *ngFor="let poll of polls">
             {{poll.question}}
-            <ion-badge>{{poll.answers}}</ion-badge>
+            <ion-badge right>{{poll.answers.length}}</ion-badge>
+            <ion-list *ngIf="poll.answers">
+                <ion-item *ngFor="let answer of poll.answers">
+                    {{answer.answer}}
+                </ion-item>
+            </ion-list>
         </ion-item>
     </ion-list>
     <ion-fab bottom right>

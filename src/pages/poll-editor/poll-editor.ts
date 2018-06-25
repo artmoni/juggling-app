@@ -19,10 +19,12 @@ import {PollAnswer} from "../../models/poll_answer";
 export class PollEditorPage {
 
     poll: Poll;
-    answers: PollAnswer[];
+    answers: PollAnswer[] = [];
+
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private pollProvider: PollsProvider) {
         this.poll = new Poll();
+        this.answers.push(new PollAnswer());
     }
 
     ionViewDidLoad() {
@@ -30,7 +32,15 @@ export class PollEditorPage {
     }
 
     createPoll() {
-        this.pollProvider.createPoll(this.poll).subscribe(data=>this.navCtrl.pop());
+        this.pollProvider.createPoll(this.poll).subscribe(poll => {
+            this.pollProvider.createAnswer(poll, this.answers[0]).subscribe(answer => {
+                    console.log(answer);
+                    this.navCtrl.pop();
+                }
+            );
+
+
+        });
     }
 
 }
