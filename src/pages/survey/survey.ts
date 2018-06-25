@@ -43,7 +43,7 @@ export class SurveyPage {
     dispayPoll() {
         this.storage.get("user").then(users => {
             console.log(users);
-            this.surveyProvider.getSurvey(serialize(users[0])).subscribe(survey => {
+            this.surveyProvider.getSurvey(serialize(users)).subscribe(survey => {
                 // console.log(survey);
                 this.survey = <Survey>survey;
                 console.log(this.survey);
