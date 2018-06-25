@@ -20,7 +20,7 @@ import {PollEditorPage} from "../pages/poll-editor/poll-editor";
 import {AuthentificationProvider} from '../providers/authentification/authentification';
 import {SubscribePage} from "../pages/subscribe/subscribe";
 import {IonicStorageModule} from "@ionic/storage";
-import { TabsProvider } from '../providers/tabs/tabs';
+import { UserProvider } from '../providers/tabs/tabs';
 
 @NgModule({
     declarations: [
@@ -63,7 +63,7 @@ import { TabsProvider } from '../providers/tabs/tabs';
         SurveysProvider,
         PollsProvider,
         AuthentificationProvider,
-    TabsProvider
+    UserProvider
     ]
 })
 export class AppModule {
