@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AbstractProvider} from "../AbstractProvider";
 import {User} from "../../models/user";
+import {Poll} from "../../models/poll";
 
 /*
   Generated class for the UserProvider provider.
@@ -23,6 +24,16 @@ export class UserProvider extends AbstractProvider {
         let headers = new HttpHeaders({"Content-Type": "application/json"});
 
         return this.http.post(this.url + "/users", {}, {headers: headers});
+    }
+
+    update(user: User) {
+        let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+        return this.http.post<User>(this.url + "/users/update", user, {headers: headers});
+    }
+
+    receive(user: User) {
+        return this.http.get(this.url + "/users/" + user.id);
     }
 
 }

@@ -3,9 +3,9 @@
 
 export class User {
     private _id : number;
-    private _name : string;
     private _mail : string;
     private _tel : string;
+    private _name : string;
 
 
     get id(): number {

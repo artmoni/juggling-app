@@ -5,13 +5,13 @@ import {ContactPage} from '../contact/contact';
 import {HomePage} from '../home/home';
 import {PollPage} from "../poll/poll";
 import {SurveysPage} from "../surveys/surveys";
-import {SubscribePage} from "../subscribe/subscribe";
 import {Storage} from "@ionic/storage";
 import {User} from "../../models/user";
 import {Poll} from "../../models/poll";
-import {UserProvider} from "../../providers/tabs/tabs";
+import {UserProvider} from "../../providers/user/user";
 import {PollEditorPage} from "../poll-editor/poll-editor";
 import {serialize} from "serializer.ts/Serializer";
+import {UserProfilePage} from "../user-profile/user-profile";
 
 @Component({
     templateUrl: 'tabs.html'
@@ -20,7 +20,8 @@ export class TabsPage {
 
     tab1Root = HomePage;
     tab2Root = SurveysPage;
-    tab3Root = ContactPage;
+    tab3Root = PollEditorPage;
+    tab4Root = UserProfilePage;
 
     constructor(private storage: Storage, private userProvider: UserProvider) {
 
