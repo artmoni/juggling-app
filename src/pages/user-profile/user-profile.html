@@ -19,21 +19,20 @@
         <ion-list>
             <ion-item>
                 <ion-label color="primary">Nom :</ion-label>
-                <ion-input placeholder="User" [(ngModel)]="user.name"></ion-input>
+                <ion-input placeholder="Paul" [(ngModel)]="user.name"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Mail :</ion-label>
-                <ion-input placeholder="User" [(ngModel)]="user.mail"></ion-input>
+                <ion-input placeholder="paul@gmail.com" [(ngModel)]="user.mail" type="mail"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Numéro de téléphone :</ion-label>
-                <ion-input placeholder="User" [(ngModel)]="user.tel"></ion-input>
+                <ion-input placeholder="0612345678" [(ngModel)]="user.tel" type="tel"></ion-input>
             </ion-item>
             <ion-footer>
                 <button ion-button large center (click)="update()">Mettre à jour mon profil</button>
             </ion-footer>
         </ion-list>
-
     </div>
 
 </ion-content>
