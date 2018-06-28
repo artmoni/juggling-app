@@ -20,6 +20,7 @@ import {PollEditorPage} from "../pages/poll-editor/poll-editor";
 import {IonicStorageModule} from "@ionic/storage";
 import {UserProfilePage} from "../pages/user-profile/user-profile";
 import {UserProvider} from "../providers/user/user";
+import {SurveyComponent} from "../components/survey/survey";
 
 @NgModule({
     declarations: [
@@ -33,12 +34,14 @@ import {UserProvider} from "../providers/user/user";
         SurveyPage,
         PollEditorPage,
         UserProfilePage,
+        SurveyComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot(),
+
 
     ],
 
@@ -54,6 +57,7 @@ import {UserProvider} from "../providers/user/user";
         SurveyPage,
         PollEditorPage,
         UserProfilePage,
+        SurveyComponent
     ],
     providers: [
         StatusBar,

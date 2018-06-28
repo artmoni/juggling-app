@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { UserFormComponent } from './user-form/user-form';
+import { SurveyComponent } from './survey/survey';
 @NgModule({
-	declarations: [UserFormComponent],
+	declarations: [UserFormComponent,
+    SurveyComponent],
 	imports: [],
-	exports: [UserFormComponent]
+	exports: [UserFormComponent,
+    SurveyComponent]
 })
 export class ComponentsModule {}
