@@ -18,6 +18,17 @@ export class SurveysProvider extends AbstractProvider {
         super();
     }
 
+    createSurvey(poll: Poll) {
+        let body = {
+            poll: poll
+    }
+        ;
+        let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+        return this.http.post(this.url + "/surveys", body, {headers: headers});
+
+    }
+
     createSurveyAnswer(survey: Survey, answer: PollAnswer, user: User) {
         let body = {
             survey: survey,

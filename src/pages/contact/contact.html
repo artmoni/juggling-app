@@ -14,8 +14,10 @@
             <ion-list *ngIf="poll.answers">
                 <ion-item *ngFor="let answer of poll.answers">
                     {{answer.answer}}
+
                 </ion-item>
             </ion-list>
+            <button ion-button (click)="createSurvey(poll)" right>New survey</button>
         </ion-item>
     </ion-list>
     <ion-fab bottom right>

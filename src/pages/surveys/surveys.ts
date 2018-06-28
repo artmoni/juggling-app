@@ -26,8 +26,7 @@ export class SurveysPage {
     constructor(private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private surveyProvider: SurveysProvider) {
     }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad SurveysPage');
+    ionViewDidEnter() {
         this.show();
     }
 
