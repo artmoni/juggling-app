@@ -39,7 +39,9 @@ export class SurveyPage {
 
     selectAnswer(answer: PollAnswer) {
         this.storage.get("user").then((user) => {
-            this.surveyProvider.createSurveyAnswer(this.survey, answer, serialize(user)).subscribe();
+            this.surveyProvider.createSurveyAnswer(this.survey, answer, serialize(user)).subscribe(answer => {
+                this.navCtrl.pop();
+            });
         }, error => {
             console.log(error)
         });
