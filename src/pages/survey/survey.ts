@@ -28,7 +28,12 @@ export class SurveyPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad SurveyPage');
-        this.dispayPoll();
+
+
+        // this.dispayPoll();
+
+        this.survey = this.navParams.get('survey');
+
         // console.log(this.survey)
     }
 

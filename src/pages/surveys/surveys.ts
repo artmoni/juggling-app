@@ -43,9 +43,9 @@ export class SurveysPage {
         });
     }
 
-    goToSurvey() {
+    goToSurvey(survey : Survey) {
 
-        this.navCtrl.push(SurveyPage, {})
+        this.navCtrl.push(SurveyPage, {"survey" : survey})
 
     }
 }
