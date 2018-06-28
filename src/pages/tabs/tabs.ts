@@ -20,7 +20,7 @@ export class TabsPage {
 
     tab1Root = HomePage;
     tab2Root = SurveysPage;
-    tab3Root = PollEditorPage;
+    tab3Root = ContactPage;
     tab4Root = UserProfilePage;
 
     constructor(private storage: Storage, private userProvider: UserProvider) {

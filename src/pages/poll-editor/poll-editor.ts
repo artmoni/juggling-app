@@ -25,6 +25,7 @@ export class PollEditorPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, private pollProvider: PollsProvider) {
         this.poll = new Poll();
         this.answers.push(new PollAnswer());
+        this.answers.push(new PollAnswer());
     }
 
     ionViewDidLoad() {
@@ -33,13 +34,13 @@ export class PollEditorPage {
 
     createPoll() {
         this.pollProvider.createPoll(this.poll).subscribe(poll => {
-            this.pollProvider.createAnswer(poll, this.answers[0]).subscribe(answer => {
-                    console.log(answer);
-                    this.navCtrl.pop();
-                }
-            );
-
-
+            for (let answer of this.answers) {
+                this.pollProvider.createAnswer(poll, answer).subscribe(answer => {
+                        console.log(answer);
+                    }
+                );
+            }
+            this.navCtrl.pop();
         });
     }
 
