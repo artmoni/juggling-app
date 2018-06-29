@@ -38,6 +38,7 @@ export class TabsPage {
                             console.log("error");
                         }
                     );
+
                 }
                 console.log("oku" + user);
             }, (error) => {

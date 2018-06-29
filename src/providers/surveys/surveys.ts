@@ -4,6 +4,7 @@ import {PollAnswer} from "../../models/poll_answer";
 import {Survey} from "../../models/survey";
 import {AbstractProvider} from "../AbstractProvider";
 import {User} from "../../models/user";
+import {Poll} from "../../models/poll";
 
 /*
   Generated class for the SurveysProvider provider.
@@ -20,8 +21,8 @@ export class SurveysProvider extends AbstractProvider {
 
     createSurvey(poll: Poll) {
         let body = {
-            poll: poll
-    }
+                poll: poll
+            }
         ;
         let headers = new HttpHeaders({"Content-Type": "application/json"});
 

@@ -24,12 +24,12 @@ export class PollEditorPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private pollProvider: PollsProvider) {
         this.poll = new Poll();
-        this.answers.push(new PollAnswer());
-        this.answers.push(new PollAnswer());
+
     }
 
     ionViewDidLoad() {
-
+        this.answers.push(new PollAnswer());
+        this.answers.push(new PollAnswer());
     }
 
     createPoll() {
